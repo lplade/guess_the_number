@@ -49,15 +49,19 @@ def input_valid(x):
 
 def main():
 
+    guess_counter = 0
+
     (low, high) = configure_range()
     secret = generate_secret(low, high)
 
     while True:
         guess = get_guess()
         result = check_guess(guess, secret)
+        guess_counter += 1
         print(result)
 
         if result == correct:
+            print("You got in in " + str(guess_counter))
             break
 
 
