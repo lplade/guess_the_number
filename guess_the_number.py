@@ -17,7 +17,18 @@ def generate_secret(low, high):
 
 def get_guess():
     '''get user's guess'''
-    return int(input('Guess the secret number? '))
+    x = 0
+    valid = False
+    while not valid:
+        try:
+            x = int(input('Guess the secret number?'))
+        except ValueError:
+            print('Invalid!')
+        if 1 <= x <= 10:
+            valid = True
+        else:
+            print('Value out of range!')
+    return x
 
 
 def check_guess(guess, secret):
@@ -29,6 +40,12 @@ def check_guess(guess, secret):
     if guess > secret:
         return too_high
 
+def input_valid(x):
+    try:
+        if type(x) == int:
+            return True
+    except:
+        return False
 
 def main():
 
