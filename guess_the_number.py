@@ -57,13 +57,12 @@ def main():
 
         guess_counter = 0
 
-<<<<<<< HEAD
         (low, high) = configure_range()
         secret = generate_secret(low, high)
 
         guessing = True
         while guessing:
-            guess = get_guess()
+            guess = get_guess(low, high)
             result = check_guess(guess, secret)
             guess_counter += 1
             print(result)
@@ -87,14 +86,6 @@ def main():
             else:
                 print("Please enter Y or N.")
                 replay_input_invalid = True
-=======
-    while True:
-        guess = get_guess(low, high)
-        result = check_guess(guess, secret)
-        guess_counter += 1
-        print(result)
->>>>>>> bc77cfa97515fdbe17079e8da18add58a25d3e28
-
 
 
 if __name__ == '__main__':
