@@ -49,21 +49,42 @@ def input_valid(x):
 
 def main():
 
-    guess_counter = 0
+    game_running = True
+    while game_running:  # main game loop
 
-    (low, high) = configure_range()
-    secret = generate_secret(low, high)
+        guess_counter = 0
 
-    while True:
-        guess = get_guess()
-        result = check_guess(guess, secret)
-        guess_counter += 1
-        print(result)
+        (low, high) = configure_range()
+        secret = generate_secret(low, high)
 
-        if result == correct:
-            print("You got in in " + str(guess_counter))
-            break
+        guessing = True
+        while guessing:
+            guess = get_guess()
+            result = check_guess(guess, secret)
+            guess_counter += 1
+            print(result)
+
+            if result == correct:
+                print("You got in in " + str(guess_counter))
+                guessing = False
+
+        print("DEBUG: end of game")
+
+        replay_input_invalid = True
+        while replay_input_invalid:  # input validation loop
+        # TODO separate into validation function
+            replay = input("Play again? [Y/N] ")
+            if replay.upper() == 'Y':
+                replay_input_invalid = False
+                game_running = True
+            elif replay.upper() == 'N':
+                replay_input_invalid = False
+                game_running = False
+            else:
+                print("Please enter Y or N.")
+                replay_input_invalid = True
+
 
 
 if __name__ == '__main__':
-    main()
+        main()
