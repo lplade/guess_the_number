@@ -7,7 +7,9 @@ too_high = 'too high'
 
 def configure_range():
     '''Set the high and low values for the random number'''
-    return 1, 10
+    minimum = int(input('Enter the minimum value: '))
+    maximum = int(input('Enter the maximum value: '))
+    return minimum, maximum
 
 
 def generate_secret(low, high):
@@ -15,7 +17,7 @@ def generate_secret(low, high):
     return random.randint(low, high)
 
 
-def get_guess():
+def get_guess(low, high):
     '''get user's guess'''
     x = 0
     valid = False
@@ -24,7 +26,8 @@ def get_guess():
             x = int(input('Guess the secret number?'))
         except ValueError:
             print('Invalid!')
-        if 1 <= x <= 10:
+            continue
+        if low <= x <= high:
             valid = True
         else:
             print('Value out of range!')
@@ -54,6 +57,7 @@ def main():
 
         guess_counter = 0
 
+<<<<<<< HEAD
         (low, high) = configure_range()
         secret = generate_secret(low, high)
 
@@ -83,6 +87,13 @@ def main():
             else:
                 print("Please enter Y or N.")
                 replay_input_invalid = True
+=======
+    while True:
+        guess = get_guess(low, high)
+        result = check_guess(guess, secret)
+        guess_counter += 1
+        print(result)
+>>>>>>> bc77cfa97515fdbe17079e8da18add58a25d3e28
 
 
 
