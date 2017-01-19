@@ -26,6 +26,7 @@ def get_guess(low, high):
             x = int(input('Guess the secret number?'))
         except ValueError:
             print('Invalid!')
+            continue
         if low <= x <= high:
             valid = True
         else:
